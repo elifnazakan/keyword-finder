@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeywordFinder</title>
+    <script>
+        
+        function checkKeywords(){
+
+            document.querySelector("#matched-keywords").innerHTML = ""
+
+            const sentence = document.querySelector("#content-textarea").value.toLowerCase()
+            
+            const keywordsContent = document.querySelector("#keyword-textarea").value.toLowerCase()
+            
+            const keywords = keywordsContent.split(",")
+
+            for (let i = 0; i < keywords.length; i++) {
+                const keyword = keywords[i].trim()
+            
+                if (!sentence.includes(keyword)) {
+                    const keywordDiv = document.createElement("div");
+                    keywordDiv.innerHTML = keyword;
+                    document.querySelector("#matched-keywords").appendChild(keywordDiv);
+                }
+            }
+            
+        }
+    </script>
+</head>
+<body style="background-color: pink;">
+    <div>
+        <h1 style="color:mediumvioletred; text-align: center;">Keyword Checker</h1>
+    </div>
+    <div style="display:flex; gap: 10px; justify-content: center;">
+        <div>
+            <textarea placeholder="Write the sentences here." name="" id="content-textarea" cols="60" rows="40"></textarea>
+            <br>
+            <div style="font-weight: bold;">Required Keywords: </div>
+            <div id="matched-keywords"></div>
+        </div>
+    
+        <div style="display: flex; flex-direction: column; ">
+            <textarea placeholder="Write the keywords here." name="" id="keyword-textarea" cols="30" rows="40"></textarea>
+            <button style="cursor: pointer; background-color:mediumvioletred; color: white;" onclick="checkKeywords()">CHECK KEYWORDS</button>
+        </div>
+    </div>
+    
+</body>
+</html>
